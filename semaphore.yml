@@ -10,11 +10,6 @@ blocks:
     task:
       secrets:
         - name: prguser  # If using secrets for credentials
-      jobs:
-        - name: Ping Windows
-          commands:
-            - checkout
-            - ansible-playbook -i inventory.ini ping-playbook.yml
 
             jobs:
   - name: Setup and Run Ansible Playbook

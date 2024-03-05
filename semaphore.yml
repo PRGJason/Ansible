@@ -9,7 +9,7 @@ blocks:
   - name: "Execute Ansible Playbook on Windows Host"
     task:
       secrets:
-        - name: your_semaphore_secret_name  # If using secrets for credentials
+        - name: prguser  # If using secrets for credentials
       jobs:
         - name: Ping Windows
           commands:

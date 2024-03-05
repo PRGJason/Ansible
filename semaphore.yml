@@ -15,3 +15,10 @@ blocks:
           commands:
             - checkout
             - ansible-playbook -i inventory.ini ping-playbook.yml
+
+            jobs:
+  - name: Setup and Run Ansible Playbook
+    commands:
+      - checkout
+      - pip install pywinrm requests  # Install the required Python modules
+      - ansible-playbook -i inventory ping-playbook.yml

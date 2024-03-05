@@ -1,0 +1,17 @@
+version: v1.0
+name: Ping Windows Task
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+blocks:
+  - name: "Execute Ansible Playbook on Windows Host"
+    task:
+      secrets:
+        - name: your_semaphore_secret_name  # If using secrets for credentials
+      jobs:
+        - name: Ping Windows
+          commands:
+            - checkout
+            - ansible-playbook -i inventory.ini ping-playbook.yml

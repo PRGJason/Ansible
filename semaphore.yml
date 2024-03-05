@@ -1,0 +1,19 @@
+version: v1.0
+name: Ping Task
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+blocks:
+  - name: "Execute Ansible Playbook"
+    task:
+      secrets:
+        - name: ssh_key
+      jobs:
+        - name: Ping
+          commands:
+            - checkout
+            - echo "$SSH_PRIVATE_KEY" > ansible_ssh_key.pem
+            - chmod 600 ansible_ssh_key.pem
+            - ansible-playbook -i inventory.ini ping-playbook.yml --private-key ansible_ssh_key.pem
